@@ -1,0 +1,592 @@
+@import "bootstrap";
+@import "bourbon";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600')
+
+/*MAIN*/
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  height: 100%;
+  width: 100%;
+  padding: 10px 15px 60px 15px;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4em;
+  /*text-transform: uppercase;*/
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.icon {
+  margin: 0 15px;
+}
+
+/*NAVBAR*/
+
+.nav {
+    background-color: #fff;
+    height: 150px;
+
+}
+
+.navbar-inverse {
+  background-color: #fff !important;
+  border-color: #fff !important;
+}
+.navbar-brand {
+  padding: 15px;
+  position: fixed;
+  left: 0;
+}
+.navbar-brand>img {
+  top: 0;
+  height: 150px;
+  left: 0;
+  padding-left: 15px; 
+  width: auto;
+}
+
+.navbar-nav {
+  position: fixed;
+  top: 0;
+  right: 0px;
+  padding-right: 15px;
+}
+.navbar-nav> li> .dropdown-menu {
+  z-index: 9999;
+}
+
+.navbar-brand{ 
+  background-color: #fff;
+  width: 200px;
+}
+
+/*HAMBURGER*/
+.hamburger {
+  width: 90px;
+  height: 44px;
+  position: fixed;
+  top: 30px;
+  right: 20px;
+  transition: transform 0.35s;
+  cursor: pointer;
+  transform-origin: right center;
+  z-index: 1001;
+}
+.hamburger .line {
+  display: block;
+  position: absolute;
+  height: 4px;
+  background-color: #000;
+  width: 40px;
+  right: 0;
+  border-radius: 2px;
+  transition: top 0.35s 0.35s, width 0.35s 0.35s;
+}
+.hamburger .line:nth-child(1) {
+  width: 40px;
+  top: 0px;
+}
+.hamburger .line:nth-child(2) {
+  width: 65px;
+  top: 20px;
+}
+.hamburger .line:nth-child(3) {
+  width: 90px;
+  top: 40px;
+}
+.hamburger.expanded {
+  transform: rotate(-45deg);
+  transition: transform 0.35s 0.35s;
+}
+.hamburger.expanded .line {
+  transition: top 0.35s, width 0.35s;
+  width: 65px;
+  top: 20px;
+}
+
+.overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: #fff;
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s 0.35s, visibility 0.35s 0.35s;
+}
+
+.skew {
+  min-width: 300px;
+  width: 50%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: #fff;
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.35s 0.35s;
+}
+.skew:before {
+  content: " ";
+  display: block;
+  transform: none;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform-origin: left top;
+  transition: transform 0.35s 0.35s;
+}
+
+.hamburger.expanded ~ .overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hamburger.expanded ~ .skew {
+  transform: translate3d(0, 0, 0);
+}
+.hamburger.expanded ~ .skew:before {
+  transform: skewX(-10deg);
+}
+
+
+
+/*OVERLAY MENU*/
+
+.menu {
+  width: 90px;
+  display: block;
+  background-color: #fff;
+  color: #000;
+  position: absolute;
+  left: 40%;
+  font-size: 3.5em;
+  text-align: center;
+}
+
+.menu li {
+ display: block;
+ padding: 30px auto;
+}
+
+.menu li:hover {
+ display: block;
+ background: #ffffff;
+ padding: 15px auto;
+ border-bottom: solid 2px #000; 
+}
+
+.menu ul li a {
+ text-decoration: none;
+ color: #000;
+}
+
+.menu ul li a:hover {
+ color: #000;
+ text-decoration: none;
+}
+
+.menu a {
+ text-decoration: none;
+ color: #000;
+}
+
+.menu a:hover {
+ text-decoration: none;
+ color: #000;
+}
+
+/*DIAMOND*/
+
+.diamond {
+  width: 0;
+  height: 0;
+  border: 250px solid;
+  border-bottom-color: #000;
+  position: relative;
+  top: -250px;
+  display: inline-block;
+  border-radius: 2px solid #000;
+}
+.diamond:after {
+  content: '';
+  position: absolute;
+  left: -250px;
+  top: 250px;
+  width: 0;
+  height: 0;
+  border: 250px solid;
+  border-top-color:  #000;
+  border-radius: 2px solid #000;
+  padding-bottom: 50px;
+  margin-bottom: 250px;
+}
+
+ul {
+  position: fixed;
+  top: 50px;
+}
+li {
+  list-style-type: none;
+}
+
+ul li a {
+  display: inline-block;
+  color: #fff !important;
+
+}
+
+a:hover {
+  transform: rotateY(0);
+  color: #fff;
+}
+a.last:hover {
+  transform: rotateY(0);
+  color: #fff;
+}
+
+#show {
+  color: 1px solid #fff;
+  display: none;
+  font-size: 3.5em;
+  text-transform: uppercase;
+}
+.diamond:hover #show {
+  
+  opacity: 1;
+  display: table-cell;
+  font-size: 3.5em;
+  position: fixed;
+  top: 40%;
+  right: 35%;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+  vertical-align: middle;
+  z-index: 20;
+}
+
+.diamond:hover #show {
+border-bottom: 5px solid #fff;
+z-index: 20;
+}
+
+/* SOCIAL MEDIA FOOTER */
+
+
+
+.social-btns .btn,
+.social-btns .btn:before,
+.social-btns .btn .fa {
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+  -webkit-transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
+          transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
+}
+.social-btns .btn:before {
+  top: 90%;
+  left: -110%;
+}
+.social-btns .btn .fa {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+.social-btns .btn.facebook:before {
+  background-color: #3b5998;
+}
+.social-btns .btn.facebook .fa {
+  color: #000;
+}
+.social-btns .btn.twitter:before {
+  background-color: #3cf;
+}
+.social-btns .btn.twitter .fa {
+  color: #000;
+}
+.social-btns .btn.google:before {
+  background-color: #dc4a38;
+}
+.social-btns .btn.google .fa {
+  color: #000;
+}
+.social-btns .btn.dribbble:before {
+  background-color: #f26798;
+}
+.social-btns .btn.dribbble .fa {
+  color: #000;
+}
+.social-btns .btn.github:before {
+  background-color: #00aff0;
+}
+.social-btns .btn.github .fa {
+  color: #000;
+}
+.social-btns .btn.codepen:before {
+  background-color: #00aff0;
+}
+.social-btns .btn.codepen .fa {
+  color: #000;
+}
+.social-btns .btn.linkedin:before {
+  background-color: #00aff0;
+}
+.social-btns .btn.linkedin .fa {
+  color: #000;
+}
+
+.social-btns .btn:focus:before,
+.social-btns .btn:hover:before {
+  top: -10%;
+  left: -10%;
+}
+.social-btns .btn:focus .fa,
+.social-btns .btn:hover .fa {
+  color: #fff;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.social-btns {
+  height: 90px auto;
+  margin: auto;
+  font-size: 0;
+  text-align: center;
+  position: fixed;
+  top: 100;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+
+.social-btns .btn {
+  display: inline-block;
+  background-color: #fff;
+  width: 90px;
+  height: 90px;
+  line-height: 090px;
+  margin: 0 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 28%;
+  box-shadow: 0 5px 15px -5px rgba(0,0,0,0.1);
+  opacity: 0.99;
+}
+.social-btns .btn:before {
+  content: '';
+  width: 120%;
+  height: 120%;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.social-btns .btn .fa {
+  font-size: 38px;
+  vertical-align: middle;
+}
+
+
+/*FOOTER*/
+
+footer {
+  position: fixed;
+  bottom: 0; 
+}
+
+footer .flex-container {
+}
+
+@media (max-height:800px){
+  footer { position: static; }
+}
+
+
+/*NOT ANOTHER MESSAGE*/
+
+h3 {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-weight: 200;
+    font-size: 20px;
+    padding: 0;
+    margin-bottom: 0;
+    line-height: 1;
+    color: #EEEEEE;
+    letter-spacing: 2px;
+}
+
+.footer-title {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  height: 150px;
+  transform: translateX(-50%) translateY(-50%);
+  font-family: "Montserrat";
+  text-align: center;
+  width: 100%;
+}
+
+
+
+/* ABOUT */
+
+.jumbotron {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+}
+
+/* CARD FOR HEADING */
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+.about {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2em;
+  background-color: #f2f2f2;
+  color: #444;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  line-height: 1;
+  text-align: center;
+}
+
+.profile-img {
+  display: block;
+  height: 7em;
+  margin-right: auto;
+  margin-left: auto;
+  border: .5em solid #f2f2f2;
+  border-radius: 100%;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.profile-text {
+  margin-top: -3.5em;
+  padding: 5em 1.5em 1.5em 1.5em;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+}
+
+.profile-name {
+  margin-right: -1em;
+  margin-bottom: .75em;
+  margin-left: -1em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: .75em;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+.profile-title {
+  color: #ccc;
+}
+
+
+/* WORK PORTFOLIO*/
+
+
+
+.work {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 30%;
+    right: 7.5%;
+}
+
+.work-item-wrapper {
+    float: right;
+    height: 310px;
+    margin-bottom: 15px auto;
+    position: relative;
+    width: 310px;
+}
+
+.work-item-wrapper:nth-of-type(3n) {
+    margin-left: 15px auto;
+}
+
+.work-item-wrapper .work-item {
+    background-color: #222222;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 220px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    top: 45px;
+    transition: all 0.2s ease 0s;
+    width: 220px;
+}
+
+.work-item-wrapper .work-item:hover {
+    height: 200px;
+    padding: 10px;
+    width: 200px;
+}
+
+.work-item-wrapper .work-item:hover .work-overlay {
+    opacity: 1;
+}
+
+.work-item-wrapper .work-item .work-img-holder {
+    height: 350px;
+    left: -44px;
+    position: absolute;
+    top: -70px;
+    width: 350px;
+}
+
+.work-item-wrapper .work-item .work-img-holder img {
+    display: inline-block;
+    height: 100%;
+    max-width: 150%;
+    vertical-align: middle;
+}
+
+.work-item-wrapper .work-item .work-overlay {
+    background-color: rgba(34, 34, 34, 0.9);
+    border-radius: 10px;
+    color: #FFFFFF;
+    height: 160px;
+    opacity: 0;
+    padding-top: 40px;
+    position: relative;
+    text-align: center !important;
+    transition: all 0.2s ease 0s;
+    width: 200px;
+}
+
+.work-item-wrapper .work-item .work-overlay .overlay-content {
+}
+
+.work-item-wrapper .work-item .work-overlay .overlay-content .hr {
+    background-color: #FFFFFF;
+    height: 2px;
+    margin: 22px auto;
+}
+
+.work-item-wrapper .work-item .work-overlay .overlay-content span {
+    font-size: 12px;
+    text-transform: uppercase;
+}
